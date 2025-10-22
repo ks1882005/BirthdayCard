@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Birthday Card</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Container for pages -->
+  <div class="book-container">
+
+    <!-- 🌸 PAGE 1 -->
+    <section class="page active" id="page1">
+      <div class="page1-container">
+        <img src="images/page1.png" alt="Birthday Image" class="background-img">
+
+        <div class="page1-content">
+          <h1></h1>
+          <p></p>
+
+          <!-- ✅ Music Button -->
+          <button class="music-btn" id="musicBtn">▶ Play Music</button>
+        </div>
+      </div>
+
+      <button class="next-btn" onclick="nextPage()">Next ➜</button>
+    </section>
+
+    <!-- 🌷 PAGE 2 -->
+    <section class="page" id="page2">
+      <div class="card2">
+        <h3>Happy Birthday Muskan 💖</h3>
+        <p></p>
+        <div class="photo-grid">
+          <img src="images/page2.png" alt="Memories">
+        </div>
+      </div>
+      <button class="prev-btn" onclick="prevPage()">⬅ Back</button>
+    </section>
+
+  </div>
+
+  <!-- 🎵 Audio -->
+  <audio id="birthdaySong" src="music/song.mp3"></audio>
+
+  <!-- 🎶 All JavaScript Combined -->
+  <script>
+  const song = document.getElementById('birthdaySong');
+  const musicBtn = document.getElementById('musicBtn');
+  const pages = document.querySelectorAll('.page');
+  let currentPage = 0;
+  let audioEnabled = false;
+
+  // ✅ Unlock audio once user clicks anywhere (first time)
+  document.addEventListener('click', function enableAudio() {
+    audioEnabled = true;
+    document.removeEventListener('click', enableAudio);
+  });
+
+  // ✅ Toggle music (plays instantly once unlocked)
+  musicBtn.addEventListener('click', async () => {
+    if (!audioEnabled) {
+      try {
+        await song.play(); // try immediate play
+        audioEnabled = true;
+      } catch {
+        return; // still blocked
+      }
+    }
+
+    if (song.paused) {
+      song.play();
+      musicBtn.textContent = "⏸ Pause Music";
+      musicBtn.classList.add("playing");
+    } else {
+      song.pause();
+      musicBtn.textContent = "▶ Play Music";
+      musicBtn.classList.remove("playing");
+    }
+  });
+
+  // ✅ Page navigation
+  function nextPage() {
+    pages[currentPage].classList.remove('active');
+    currentPage = (currentPage + 1) % pages.length;
+    pages[currentPage].classList.add('active');
+  }
+
+  function prevPage() {
+    pages[currentPage].classList.remove('active');
+    currentPage = (currentPage - 1 + pages.length) % pages.length;
+    pages[currentPage].classList.add('active');
+  }
+</script>
+
+
+</body>
+</html>

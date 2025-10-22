@@ -1,0 +1,180 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to bottom right, #ffeaf4, #fff6fb);
+  overflow-x: hidden;
+}
+
+.book-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Page layout */
+.page {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  text-align: center;
+  transition: opacity 0.7s ease;
+}
+
+.page.active {
+  display: flex;
+  animation: fadeIn 1s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* 🌸 PAGE 1 (same size as page 2 now) */
+.page1-container {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(255, 160, 200, 0.4);
+  width: 90%;
+  max-width: 800px;
+  height: auto;
+  animation: fadeIn 1s ease forwards;
+  position: relative;
+}
+
+.background-img {
+  width: 100%;
+  height: auto;
+  border-radius: 15px;
+  margin-bottom: 20px;
+  object-fit: cover;
+}
+
+/* Content inside page 1 */
+.page1-content {
+  text-align: center;
+  color: #ff6f9c;
+  background: none;
+  padding: 0;
+  border: none;
+  box-shadow: none;
+}
+
+.page1-content h1 {
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.page1-content p {
+  font-size: 1.1em;
+  margin-bottom: 15px;
+}
+
+/* Music Button */
+.music-btn {
+  background-color: #ffc6de;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.music-btn:hover {
+  background-color: #ff99bb;
+}
+.music-btn.playing {
+  background-color: #ff91c1;
+  box-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+}
+
+/* Navigation buttons */
+.next-btn, .prev-btn {
+  background-color: #ffb6d9;
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-top: 20px;
+  transition: 0.3s;
+}
+
+.next-btn:hover, .prev-btn:hover {
+  background-color: #ff91c1;
+}
+
+/* 🌸 PAGE 2 */
+.card2 {
+  background: #fff;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 0 25px rgba(255, 160, 200, 0.4);
+  width: 90%;
+  max-width: 800px;
+  animation: fadeIn 1s ease forwards;
+}
+
+.card2 h3 {
+  color: #ff6f9c;
+  font-size: 1.6em;
+}
+
+.card2 p {
+  color: #444;
+  text-align: justify;
+  font-size: 1.1em;
+  margin: 15px 0;
+}
+
+.photo-grid img {
+  width: 100%;
+  border-radius: 15px;
+  margin-top: 20px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .page1-container, .card2 {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .page1-content h1 {
+    font-size: 1.5em;
+  }
+
+  .photo-grid img {
+    width: 100%;
+  }
+  .friend-photo {
+  width: 220px; /* adjust size as needed */
+  height: auto;
+  border: none;
+  outline: none;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 160, 200, 0.3);
+  margin-bottom: 15px;
+}
+.page {
+  display: none;
+  transition: opacity 0.6s ease;
+}
+.page.active {
+  display: block;
+  opacity: 1;
+}
+
+.music-btn.playing {
+  background-color: #ff91c1;
+  box-shadow: 0 0 12px rgba(255, 105, 180, 0.6);
+}
+
+
+}
